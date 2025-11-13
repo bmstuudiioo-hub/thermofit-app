@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>ThermoFit App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <!-- PWA: Manifest -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#020617">
   <meta name="description" content="ThermoFit – Camiseta inteligente con control térmico y monitorización fisiológica.">
 
-  <!-- PWA: Iconos (asegúrate de tenerlos en /icons) -->
+  <!-- PWA: Iconos -->
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
 
@@ -36,6 +36,7 @@
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -48,9 +49,9 @@
 
     .app-container {
       width: 100%;
-      max-width: 450px;
+      max-width: 480px;
       min-height: 100vh;
-      padding: 16px 16px 20px;
+      padding: 18px 16px 24px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -61,7 +62,7 @@
       display: none;
       flex: 1;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
     .screen.active {
       display: flex;
@@ -83,8 +84,8 @@
     }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       border-radius: 999px;
       background: conic-gradient(from 180deg, #22c55e, #0ea5e9, #22c55e);
       padding: 2px;
@@ -101,7 +102,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: #22c55e;
     }
@@ -113,25 +114,25 @@
     }
 
     .brand-text h1 {
-      font-size: 18px;
+      font-size: 20px;
       letter-spacing: 0.04em;
     }
 
     .brand-text span {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .chip {
       border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 11px;
+      padding: 5px 12px;
+      font-size: 12px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -154,21 +155,21 @@
     }
 
     .icon-btn {
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(15, 23, 42, 0.8);
-      font-size: 15px;
+      font-size: 16px;
       cursor: pointer;
     }
 
     .avatar-circle {
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #020617;
@@ -180,60 +181,66 @@
       display: block;
     }
 
-    /* Tarjetas y layout general de main */
+    /* Layout general main */
     main {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       flex: 1;
     }
 
     .cards-row {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
+    }
+
+    @media (max-width: 400px) {
+      .cards-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     .card {
       border-radius: var(--radius-lg);
       background: radial-gradient(circle at top left, #111827, #020617);
       border: 1px solid var(--border);
-      padding: 12px 12px 10px;
+      padding: 14px 14px 12px;
       box-shadow: 0 16px 40px rgba(15, 23, 42, 0.8);
       position: relative;
       overflow: hidden;
     }
 
     .card-title {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .card-main {
       margin-top: 4px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
 
     .metric-value {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
 
     .metric-unit {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
       margin-left: 3px;
     }
 
     .metric-sub {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
     }
 
@@ -241,9 +248,9 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-size: 10px;
+      font-size: 11px;
       border-radius: 999px;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border: 1px solid rgba(148, 163, 184, 0.4);
       color: var(--muted);
     }
@@ -257,14 +264,14 @@
 
     .card-large {
       border-radius: var(--radius-xl);
-      padding: 14px 14px 12px;
+      padding: 16px 14px 14px;
       background: radial-gradient(circle at top, #0f172a, #020617);
     }
 
     .chip-mode {
       border-radius: 999px;
-      padding: 3px 8px;
-      font-size: 10px;
+      padding: 4px 10px;
+      font-size: 11px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -281,31 +288,31 @@
     }
 
     .heat-level-text {
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 600;
     }
 
     .badge-soft {
       border-radius: 999px;
-      padding: 3px 10px;
-      font-size: 10px;
+      padding: 4px 12px;
+      font-size: 11px;
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid var(--border);
       color: var(--muted);
     }
 
     .slider-row {
-      margin-top: 10px;
+      margin-top: 12px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 11px;
+      gap: 6px;
+      font-size: 12px;
     }
 
     input[type="range"] {
       width: 100%;
       -webkit-appearance: none;
-      height: 5px;
+      height: 6px;
       border-radius: 999px;
       background: #1f2937;
       outline: none;
@@ -328,12 +335,12 @@
       border-radius: 999px;
       border: 1px solid var(--border);
       overflow: hidden;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .mode-btn {
-      font-size: 11px;
-      padding: 5px 10px;
+      font-size: 12px;
+      padding: 7px 14px;
       border: none;
       background: transparent;
       color: var(--muted);
@@ -348,18 +355,24 @@
     .bottom-section {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 10px;
+      gap: 12px;
+    }
+
+    @media (max-width: 400px) {
+      .bottom-section {
+        grid-template-columns: 1fr;
+      }
     }
 
     .alert-item {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      font-size: 11px;
+      gap: 4px;
+      font-size: 12px;
     }
 
     .alert-title {
-      font-size: 12px;
+      font-size: 13px;
       margin-bottom: 4px;
       font-weight: 500;
     }
@@ -370,7 +383,7 @@
       gap: 5px;
       font-size: 10px;
       border-radius: 999px;
-      padding: 2px 8px;
+      padding: 3px 8px;
       border: 1px solid rgba(248, 113, 113, 0.5);
       color: #fecaca;
       background: rgba(127, 29, 29, 0.4);
@@ -387,8 +400,8 @@
       margin-top: 4px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      font-size: 11px;
+      gap: 4px;
+      font-size: 12px;
       color: var(--muted);
     }
 
@@ -398,8 +411,8 @@
     }
 
     footer {
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
       border-top: 1px solid rgba(31, 41, 55, 0.7);
     }
 
@@ -407,60 +420,52 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      font-size: 11px;
+      font-size: 13px;
       color: var(--muted);
     }
 
     .nav-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 6px 10px;
+      padding: 8px 14px;
       border-radius: 999px;
       cursor: pointer;
-    }
-
-    .nav-btn span:first-child {
-      font-size: 16px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
     }
 
     .nav-btn.active {
       color: var(--accent);
-      background: rgba(34, 197, 94, 0.1);
+      background: rgba(34, 197, 94, 0.12);
     }
 
     .hint {
-      font-size: 9px;
+      font-size: 10px;
       text-align: center;
       color: var(--muted);
-      margin-top: 6px;
-      opacity: 0.7;
+      margin-top: 8px;
+      opacity: 0.8;
     }
 
     @media (max-width: 370px) {
-      .cards-row {
-        grid-template-columns: 1fr;
-      }
-      .bottom-section {
-        grid-template-columns: 1fr;
+      .app-container {
+        padding: 14px 12px 20px;
       }
     }
 
-    /* Formularios (login, perfil, selección, comunidad) */
+    /* Formularios (login, perfil, selección, comunidad, historial) */
     .screen-header {
       margin-top: 12px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .screen-header-title {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .screen-header-sub {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
     }
 
@@ -468,18 +473,18 @@
       border-radius: var(--radius-xl);
       background: radial-gradient(circle at top, #0f172a, #020617);
       border: 1px solid var(--border);
-      padding: 16px 14px 14px;
+      padding: 18px 16px 16px;
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .field {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 12px;
+      gap: 5px;
+      font-size: 13px;
     }
 
     .field label {
@@ -491,8 +496,8 @@
       background: rgba(15, 23, 42, 0.9);
       border-radius: 999px;
       border: 1px solid var(--border);
-      padding: 8px 12px;
-      font-size: 13px;
+      padding: 10px 14px;
+      font-size: 14px;
       color: var(--text);
       outline: none;
     }
@@ -505,19 +510,20 @@
       margin-top: 4px;
       border-radius: 999px;
       border: none;
-      padding: 10px 14px;
-      font-size: 13px;
+      padding: 12px 18px;
+      font-size: 14px;
       font-weight: 500;
       background: linear-gradient(to right, #22c55e, #16a34a);
       color: #020617;
       cursor: pointer;
+      width: 100%;
     }
 
     .btn-secondary {
       border-radius: 999px;
       border: 1px solid var(--border);
-      padding: 8px 14px;
-      font-size: 12px;
+      padding: 9px 16px;
+      font-size: 13px;
       background: rgba(15, 23, 42, 0.8);
       color: var(--muted);
       cursor: pointer;
@@ -526,38 +532,29 @@
     .device-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       margin-top: 4px;
     }
 
     .device-item {
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      padding: 8px 10px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: radial-gradient(circle at top left, #020617, #020617);
-      font-size: 12px;
+      font-size: 13px;
     }
 
     .device-meta {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-    }
-
-    .badge-soft-small {
-      border-radius: 999px;
-      padding: 2px 8px;
-      font-size: 10px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border);
-      color: var(--muted);
+      gap: 3px;
     }
 
     .hello-user {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--muted);
     }
 
@@ -565,9 +562,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: -4px;
-      margin-top: 4px;
-      font-size: 11px;
+      margin-bottom: 0;
+      margin-top: 6px;
+      font-size: 13px;
       color: var(--muted);
     }
 
@@ -575,8 +572,8 @@
       border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(15, 23, 42, 0.9);
-      padding: 4px 8px;
-      font-size: 11px;
+      padding: 5px 10px;
+      font-size: 12px;
       color: var(--text);
       outline: none;
     }
@@ -585,14 +582,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .btn-back-inline {
       border-radius: 999px;
       border: 1px solid var(--border);
-      padding: 5px 10px;
-      font-size: 11px;
+      padding: 7px 12px;
+      font-size: 12px;
       background: rgba(15, 23, 42, 0.9);
       color: var(--muted);
       cursor: pointer;
@@ -602,8 +599,8 @@
     }
 
     .profile-photo-preview {
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 80px;
       border-radius: 999px;
       border: 1px dashed var(--border);
       background: rgba(15, 23, 42, 0.9);
@@ -625,8 +622,8 @@
     .community-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 6px;
+      gap: 12px;
+      margin-top: 8px;
     }
 
     .community-card {
@@ -636,19 +633,19 @@
       background: radial-gradient(circle at top left, #111827, #020617);
       display: flex;
       gap: 10px;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     .community-avatar {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 999px;
       background: #020617;
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--accent);
     }
@@ -664,19 +661,49 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
+      font-size: 12px;
     }
 
     .community-main {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
     }
 
     .tag {
       border-radius: 999px;
       padding: 2px 8px;
-      font-size: 10px;
+      font-size: 11px;
       border: 1px solid var(--border);
+    }
+
+    /* Historial pantalla completa */
+    .history-empty {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .history-session-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 12px 12px;
+      background: radial-gradient(circle at top left, #111827, #020617);
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .history-session-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .history-session-body {
+      font-size: 12px;
+      color: var(--muted);
     }
 
   </style>
@@ -716,7 +743,7 @@
         </button>
       </div>
       <div class="screen-header">
-        <div class="screen-header-title">Tu perfil</div>
+        <div class="screen-header-title">Mi perfil</div>
         <div class="screen-header-sub">
           Ajusta tu experiencia: ThermoFit adaptará las alertas y el calor a tu contexto.
         </div>
@@ -822,7 +849,7 @@
 
       <!-- ACTIVIDAD ACTUAL -->
       <div class="activity-row">
-        <span id="hello-user-text" class="hello-user">Hola 👋</span>
+        <span id="hello-user-text" class="hello-user">Hola</span>
         <div>
           <span style="margin-right:4px;">Actividad:</span>
           <select id="activity-select" class="activity-select">
@@ -859,7 +886,7 @@
           <article class="card" id="card-temp">
             <div class="card-title">
               <span>Temperatura corporal</span>
-              <span style="font-size: 11px; color: var(--muted);" id="temp-zones-label">
+              <span style="font-size: 12px; color: var(--muted);" id="temp-zones-label">
                 Pecho / Espalda / Axila
               </span>
             </div>
@@ -900,12 +927,12 @@
           </div>
 
           <div class="mode-toggle">
-            <button class="mode-btn active" id="btn-mode-auto">Auto</button>
+            <button class="mode-btn active" id="btn-mode-auto">Automático</button>
             <button class="mode-btn" id="btn-mode-manual">Manual</button>
           </div>
         </section>
 
-        <!-- Alertas + Historial -->
+        <!-- Alertas + Historial resumen -->
         <section class="bottom-section">
           <article class="card">
             <div class="card-title">
@@ -923,21 +950,13 @@
 
           <article class="card">
             <div class="card-title">
-              <span>Historial (hoy)</span>
+              <span>Historial (resumen)</span>
             </div>
             <div class="card-main">
               <div class="history-list" id="history-list">
                 <div class="history-item">
-                  <span>Inicio sesión</span>
-                  <span>—:—</span>
-                </div>
-                <div class="history-item">
-                  <span>Nivel medio calor</span>
-                  <span>0%</span>
-                </div>
-                <div class="history-item">
-                  <span>Alertas</span>
-                  <span>0</span>
+                  <span>Estado</span>
+                  <span>Sin actividad</span>
                 </div>
               </div>
             </div>
@@ -948,22 +967,10 @@
       <!-- NAV / FOOTER -->
       <footer>
         <nav class="nav">
-          <div class="nav-btn active" id="nav-panel">
-            <span>📊</span>
-            <span>Panel</span>
-          </div>
-          <div class="nav-btn" id="nav-community">
-            <span>🔥</span>
-            <span>Comunidad</span>
-          </div>
-          <div class="nav-btn" id="nav-history">
-            <span>🧾</span>
-            <span>Historial</span>
-          </div>
-          <div class="nav-btn" id="nav-settings">
-            <span>⚙️</span>
-            <span>Ajustes</span>
-          </div>
+          <button class="nav-btn active" id="nav-panel">Inicio</button>
+          <button class="nav-btn" id="nav-community">Comunidad</button>
+          <button class="nav-btn" id="nav-history">Historial</button>
+          <button class="nav-btn" id="nav-profile">Mi perfil</button>
         </nav>
         <div class="hint">
           Demo PWA: los datos se simulan. En el futuro aquí se conectará por Bluetooth a la camiseta ThermoFit.
@@ -975,7 +982,7 @@
     <section id="screen-community" class="screen">
       <div class="back-row">
         <button class="btn-back-inline" id="btn-community-back">
-          ← Volver al panel
+          ← Volver a inicio
         </button>
       </div>
       <div class="screen-header">
@@ -990,6 +997,24 @@
         </div>
       </div>
     </section>
+
+    <!-- PANTALLA 6: HISTORIAL COMPLETO -->
+    <section id="screen-history" class="screen">
+      <div class="back-row">
+        <button class="btn-back-inline" id="btn-history-back">
+          ← Volver a inicio
+        </button>
+      </div>
+      <div class="screen-header">
+        <div class="screen-header-title">Historial</div>
+        <div class="screen-header-sub">
+          Resumen de tus sesiones con ThermoFit.
+        </div>
+      </div>
+      <div class="form-card" id="history-full">
+        <!-- Rellenado por JS -->
+      </div>
+    </section>
   </div>
 
   <script>
@@ -1001,9 +1026,10 @@
     const screenDevice = document.getElementById("screen-device");
     const screenMain = document.getElementById("screen-main");
     const screenCommunity = document.getElementById("screen-community");
+    const screenHistory = document.getElementById("screen-history");
 
     function showScreen(id) {
-      [screenLogin, screenProfile, screenDevice, screenMain, screenCommunity].forEach(
+      [screenLogin, screenProfile, screenDevice, screenMain, screenCommunity, screenHistory].forEach(
         s => s.classList.remove("active")
       );
       document.getElementById(id).classList.add("active");
@@ -1016,6 +1042,9 @@
       }
       if (id === "screen-community") {
         renderCommunitySessions();
+      }
+      if (id === "screen-history") {
+        renderHistoryScreen();
       }
     }
 
@@ -1093,7 +1122,6 @@
     });
 
     btnProfileBack.addEventListener("click", () => {
-      // Si no hay usuario guardado aún, volvemos al login; si sí hay, volvemos al panel
       const u = JSON.parse(localStorage.getItem("thermofitUser") || "null");
       if (u && u.email) {
         showScreen("screen-main");
@@ -1163,14 +1191,17 @@
     const helloUserText = document.getElementById("hello-user-text");
     const avatarCircle = document.getElementById("avatar-circle");
 
+    // NAV
     const navPanel = document.getElementById("nav-panel");
     const navCommunity = document.getElementById("nav-community");
-    const navHistory = document.getElementById("nav-history");
-    const navSettings = document.getElementById("nav-settings");
+    const navHistoryBtn = document.getElementById("nav-history");
+    const navProfile = document.getElementById("nav-profile");
     const navBtns = document.querySelectorAll(".nav-btn");
 
     const btnCommunityBack = document.getElementById("btn-community-back");
+    const btnHistoryBack = document.getElementById("btn-history-back");
     const communityListEl = document.getElementById("community-list");
+    const historyFullEl = document.getElementById("history-full");
 
     let connected = false;
     let mode = "AUTO";
@@ -1182,12 +1213,16 @@
     let totalAlerts = 0;
     let simulationStarted = false;
 
+    let hasActivity = false;
+    let sessionStartTime = null;
+    let lastSessionSummary = null;
+
     function initMainScreen() {
       const user = JSON.parse(localStorage.getItem("thermofitUser") || "null");
       const device = localStorage.getItem("thermofitDevice");
 
       if (user && user.name) {
-        helloUserText.textContent = `Hola, ${user.name} 👋`;
+        helloUserText.textContent = `Hola, ${user.name}`;
         if (user.goal === "rendimiento") {
           userSubtitle.textContent = "Modo rendimiento";
         } else if (user.goal === "trabajo-frio") {
@@ -1205,6 +1240,15 @@
 
       if (device) {
         connText.textContent = "Listo para conectar";
+      }
+
+      if (!hasActivity) {
+        historyListEl.innerHTML = `
+          <div class="history-item">
+            <span>Estado</span>
+            <span>Sin actividad</span>
+          </div>
+        `;
       }
     }
 
@@ -1287,11 +1331,11 @@
     // Simulación de datos (demo)
     function startDemoData() {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+      sessionStartTime = now.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
       historyListEl.innerHTML = `
         <div class="history-item">
           <span>Inicio sesión</span>
-          <span>${timeStr}</span>
+          <span>${sessionStartTime}</span>
         </div>
         <div class="history-item">
           <span>Nivel medio calor</span>
@@ -1307,6 +1351,8 @@
 
       setInterval(() => {
         if (!connected) return;
+
+        hasActivity = true;
 
         fakeHr += (Math.random() - 0.5) * 2;
         fakeTempChest += (Math.random() - 0.5) * 0.05;
@@ -1371,7 +1417,7 @@
         historyListEl.innerHTML = `
           <div class="history-item">
             <span>Inicio sesión</span>
-            <span>${timeStr}</span>
+            <span>${sessionStartTime}</span>
           </div>
           <div class="history-item">
             <span>Nivel medio calor (aprox)</span>
@@ -1382,6 +1428,14 @@
             <span>${totalAlerts}</span>
           </div>
         `;
+
+        lastSessionSummary = {
+          start: sessionStartTime,
+          activity,
+          avgHeat: heatLevel,
+          alerts: totalAlerts,
+          meanTemp: tMean.toFixed(1)
+        };
       }, 2000);
     }
 
@@ -1465,6 +1519,44 @@
     });
 
     // ---------------------------
+    // HISTORIAL COMPLETO
+    // ---------------------------
+    function renderHistoryScreen() {
+      if (!hasActivity || !lastSessionSummary) {
+        historyFullEl.innerHTML = `
+          <p class="history-empty">
+            Aún no se ha registrado ninguna actividad.<br><br>
+            Cuando te conectes con tu camiseta ThermoFit y realices una sesión,
+            aquí verás un resumen con la hora de inicio, la actividad seleccionada,
+            el nivel medio de calor y el número de alertas.
+          </p>
+        `;
+        return;
+      }
+
+      const s = lastSessionSummary;
+      historyFullEl.innerHTML = `
+        <div class="history-session-card">
+          <div class="history-session-header">
+            <strong>Sesión actual</strong>
+            <span class="tag">Hoy · ${s.start}</span>
+          </div>
+          <div class="history-session-body">
+            <div><strong>Actividad:</strong> ${s.activity}</div>
+            <div><strong>Nivel medio de calor:</strong> ${s.avgHeat}%</div>
+            <div><strong>Alertas:</strong> ${s.alerts}</div>
+            <div><strong>Temperatura media:</strong> ${s.meanTemp} °C</div>
+          </div>
+        </div>
+      `;
+    }
+
+    btnHistoryBack.addEventListener("click", () => {
+      setActiveNav(navPanel);
+      showScreen("screen-main");
+    });
+
+    // ---------------------------
     // NAV BOTTOM
     // ---------------------------
     function setActiveNav(btn) {
@@ -1482,16 +1574,13 @@
       showScreen("screen-community");
     });
 
-    navHistory.addEventListener("click", () => {
-      // De momento solo hacemos scroll al historial de hoy dentro del panel
-      setActiveNav(navPanel);
-      showScreen("screen-main");
-      document.getElementById("history-list").scrollIntoView({ behavior: "smooth" });
+    navHistoryBtn.addEventListener("click", () => {
+      setActiveNav(navHistoryBtn);
+      showScreen("screen-history");
     });
 
-    navSettings.addEventListener("click", () => {
-      // Abrimos el formulario de perfil como ajustes
-      setActiveNav(navSettings);
+    navProfile.addEventListener("click", () => {
+      setActiveNav(navProfile);
       showScreen("screen-profile");
     });
 
